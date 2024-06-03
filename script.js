@@ -1,6 +1,6 @@
 const button = document.getElementById('button');
 const coinElm = document.querySelector('#coinCount');
-let coin = localStorage.getItem("coin") || 0; //featur set local storage
+let coin = Telegram.Utils.sessionStorageGet("coin") || 0; //featur set local storage
 coin = +coin;
 function addCoin(){
     coin++;
@@ -14,6 +14,6 @@ button.addEventListener('click', addCoin)
 
 
 function closePage(){
-    localStorage.setItem("coin", coin)
+    Telegram.Utils.sessionStorageSet("coin", coin)
 }
-window.onbeforeunload = closePage;
+Telegram.WebApp.onEvent('close', closePage)
