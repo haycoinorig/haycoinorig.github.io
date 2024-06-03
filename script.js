@@ -1,21 +1,49 @@
+// const button = document.getElementById('button');
+// const coinElm = document.querySelector('#coinCount');
+// let coin = Telegram.Utils.sessionStorageGet("coin") || localStorage.getItem('coin')|| 0; //featur set local storage
+// coin = +coin;
+// function addCoin(){
+//     coin++;
+//     setCoin()
+// }
+// function setCoin() {
+//     coinElm.innerText = coin;
+// }
+// setCoin();
+// button.addEventListener('click', addCoin)
+//
+//
+// function closePage(){
+//     Telegram.Utils.sessionStorageSet("coin", coin)
+//     localStorage.setItem('coin', coin)
+// }
+// Telegram.WebApp.onEvent('close', closePage)
+// window.onbeforeunload = closePage
+Telegram.WebApp.ready();
+
+
 const button = document.getElementById('button');
 const coinElm = document.querySelector('#coinCount');
-let coin = Telegram.Utils.sessionStorageGet("coin") || localStorage.getItem('coin')|| 0; //featur set local storage
+let coin = sessionStorage.getItem('coin') || localStorage.getItem('coin') || 0;
 coin = +coin;
-function addCoin(){
+
+function addCoin() {
     coin++;
-    setCoin()
+    setCoin();
 }
+
 function setCoin() {
     coinElm.innerText = coin;
 }
+
 setCoin();
-button.addEventListener('click', addCoin)
+button.addEventListener('click', addCoin);
 
-
-function closePage(){
-    Telegram.Utils.sessionStorageSet("coin", coin)
-    localStorage.setItem('coin', coin)
+function closePage() {
+    sessionStorage.setItem('coin', coin);
+    localStorage.setItem('coin', coin);
 }
-Telegram.WebApp.onEvent('close', closePage)
-window.onbeforeunload = closePage
+
+Telegram.WebApp.onEvent('close', closePage);
+
+window.onbeforeunload = closePage;
